@@ -1,4 +1,19 @@
+import { ChangeEvent, useState } from "react";
+
+const enum ChartTypes {
+  BAR = "BAR",
+  PIE = "PIE",
+  AREA = "AREA",
+  LINE = "LINE",
+}
+
 function App() {
+  const [selectedChart, setSelectedChart] = useState<string>(ChartTypes.BAR);
+
+  const handleSelectedChart = (e: ChangeEvent<HTMLInputElement>) => {
+    setSelectedChart(e.target.value);
+  };
+
   return (
     <div className="flex flex-col h-screen text-white bg-gray-800">
       <header className="flex justify-center items-center h-16 bg-gray-950">
@@ -15,20 +30,48 @@ function App() {
         <span className="font-bold">Choose a chart type:</span>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1">
-            <input type="radio" id="bar" name="chart-type" value="BAR" />
-            <label htmlFor="bar">BAR</label>
+            <input
+              type="radio"
+              id="bar"
+              name="chart-type"
+              value={ChartTypes.BAR}
+              checked={selectedChart === ChartTypes.BAR}
+              onChange={(e) => handleSelectedChart(e)}
+            />
+            <label htmlFor="bar">{ChartTypes.BAR}</label>
           </div>
           <div className="flex items-center gap-1">
-            <input type="radio" id="pie" name="chart-type" value="PIE" />
-            <label htmlFor="pie">PIE</label>
+            <input
+              type="radio"
+              id="pie"
+              name="chart-type"
+              value={ChartTypes.PIE}
+              checked={selectedChart === ChartTypes.PIE}
+              onChange={(e) => handleSelectedChart(e)}
+            />
+            <label htmlFor="pie">{ChartTypes.PIE}</label>
           </div>
           <div className="flex items-center gap-1">
-            <input type="radio" id="area" name="chart-type" value="AREA" />
-            <label htmlFor="area">AREA</label>
+            <input
+              type="radio"
+              id="area"
+              name="chart-type"
+              value={ChartTypes.AREA}
+              checked={selectedChart === ChartTypes.AREA}
+              onChange={(e) => handleSelectedChart(e)}
+            />
+            <label htmlFor="area">{ChartTypes.AREA}</label>
           </div>
           <div className="flex items-center gap-1">
-            <input type="radio" id="line" name="chart-type" value="LINE" />
-            <label htmlFor="line">LINE</label>
+            <input
+              type="radio"
+              id="line"
+              name="chart-type"
+              value={ChartTypes.LINE}
+              checked={selectedChart === ChartTypes.LINE}
+              onChange={(e) => handleSelectedChart(e)}
+            />
+            <label htmlFor="line">{ChartTypes.LINE}</label>
           </div>
         </div>
         <div className="w-96 h-px my-4 rounded bg-white" />
