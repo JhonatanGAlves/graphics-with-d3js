@@ -1,5 +1,8 @@
 import { ChangeEvent, useState } from "react";
 
+import { BarChart } from "../charts/BarChart";
+import { alphabet } from "../../helpers/mockedData";
+
 const enum ChartTypes {
   BAR = "BAR",
   PIE = "PIE",
@@ -64,6 +67,7 @@ export const Main = () => {
         </div>
       </div>
       <div className="w-96 h-px my-4 rounded bg-white" />
+      <BarChart data={alphabet} />
     </main>
   );
 };
